@@ -36,7 +36,7 @@ QRCode Scaned +--------+                  |
             +---------------+     +-------------+     +--------------+
 ```
 
-# Demo
+## Demo
 
 ---
 
@@ -49,7 +49,11 @@ QRCode Scaned +--------+                  |
 使用`addLinktasks()`可以添加多条任务
     `f115api.addLinktasks(list)`
     其中list是列表链接列表。
-  ![2](screenshot\2.png)
+![2](screenshot/2.png)
+![1](screenshot/1.png)
 
- ![1](screenshot\1.png)
+## 有什么卵用
+-   批量下载片片
+-   可以做一个老司机发车网，扫码即上车。
+-    。。。 
 
