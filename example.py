@@ -27,7 +27,7 @@ def crawl(page):
         url = base_url + "/page/" + str(page)
     else:
         url = base_url
-    print url 
+    print(url)
     resp = requests.get(url)
     response = pq(url, headers=headers)
     one_page_av = []

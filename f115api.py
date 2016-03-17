@@ -22,7 +22,7 @@ def getInfos():
         uid = json.loads(data)['uid']
         uidTime = json.loads(data)['time']
         sign = json.loads(data)['sign']
-    except Exception, e:
+    except Exception as e:
         return False
     url = 'http://msg.115.com/proapi/anonymous.php'
     params = {
@@ -56,7 +56,7 @@ def getQrcode():
     f.write(r.content)
     f.close()
     print(u"使用115手机客户端扫码登录")
-    time.sleep(1) 
+    time.sleep(1)
 
 
 def getUserinfo():
@@ -70,7 +70,7 @@ def getUserinfo():
     }
     uinfos = json.loads(mySession.get(url=url, params=params).text)
     userid = uinfos['data']['USER_ID']
-    
+
     print("====================")
     print(u"用户ID："+userid)
     print(u"用户名："+uinfos['data']['USER_NAME'])
@@ -85,9 +85,9 @@ def getUserinfo():
         }
         quota = json.loads(mySession.post(url=url, data=data).text)['quota']
         total = json.loads(mySession.post(url=url, data=data).text)['total']
-        print(u"本月离线配额："+str(quota)+u"个，总共"+str(total)+u"个。")  
+        print(u"本月离线配额："+str(quota)+u"个，总共"+str(total)+u"个。")
     else:
-        print(u"非会员")   
+        print(u"非会员")
     print("===================")
 
 
@@ -124,7 +124,7 @@ def waitLogin():
                 return
             else:
                 return
-        except Exception, e:
+        except Exception as e:
             print(u"超时，请重试")
             sys.exit(0)
 
@@ -163,8 +163,8 @@ def addLinktask(link):
     linkinfo = json.loads(mySession.post(url,data=data).content)
     try:
         print(linkinfo['error_msg'])
-    except Exception, e:
-        print(linkinfo['name'])  
+    except Exception as e:
+        print(linkinfo['name'])
 
 def addLinktasks(linklist):
     if len(linklist) > 15:
@@ -185,8 +185,8 @@ def addLinktasks(linklist):
         for linkinfo in linksinfo['result']:
             try:
                 print(linkinfo['error_msg'])
-            except Exception, e:
-                print(linkinfo['name']) 
+            except Exception as e:
+                print(linkinfo['name'])
 
 
 def main():
@@ -195,7 +195,7 @@ def main():
     headers = {'User-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2663.0 Safari/537.36'}
     mySession = requests.Session()
     mySession.headers.update(headers)
-    if not getInfos(): 
+    if not getInfos():
         print(u'获取信息失败')
         return
     getQrcode() # 取二维码
